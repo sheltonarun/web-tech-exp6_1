@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Calculator App</title>
+    <link rel="stylesheet" href="exp6(1).css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#evaluate').click(function(){
+                let amn = parseFloat($('#amount').val())
+                let num1 = parseFloat($('#roomrent').val())
+                let num2 = parseFloat($('#accessories').val())
+                let num3 = parseFloat($('#emergency').val())
+                let num4 = parseFloat($('#saving').val())
+
+                if(num1 + num2 + num3 + num4 !== 100){
+                    alert('Enter valid percentage (must add up to 100%)')
+                    return
+                }
+
+                let roomrent = amn * num1 / 100;
+                $('#roomrentoutput').html('Room Rent: Rs.' + roomrent.toFixed(2))
+                let accessories = amn * num2 / 100;
+                $('#accessoriesoutput').html('Accessories: Rs.' + accessories.toFixed(2))
+                let emergency = amn * num3 / 100;
+                $('#emergencyoutput').html('Emergency: Rs.' + emergency.toFixed(2))
+                let saving = amn * num4 / 100;
+                $('#savingoutput').html('Saving: Rs.' + saving.toFixed(2))
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Budget Calculator App</h1>
+        <label>Enter Amount to Manage</label>
+        <input type="text" id="amount"><br><br>
+
+        <h2>How would you like to divide your money?</h2>
+        <label>Room Rent(%)</label>
+        <input type="text" id="roomrent">
+        <label>Accessories(%)</label>
+        <input type="text" id="accessories">
+        <label>Emergency(%)</label>
+        <input type="text" id="emergency">
+        <label>Saving(%)</label>
+        <input type="text" id="saving"><br>
+
+        <button id="evaluate">Evaluate My Money</button>
+
+        <div id="roomrentoutput"></div>
+        <div id="accessoriesoutput"></div>
+        <div id="emergencyoutput"></div>
+        <div id="savingoutput"></div>
+    </div>
+</body>
+</html>
